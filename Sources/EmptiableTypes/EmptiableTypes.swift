@@ -1,5 +1,15 @@
 import Foundation
 
+public protocol NilableType {
+    var isNil: Bool { get }
+    mutating func setToNil()
+}
+
+extension Optional: NilableType {
+    public var isNil: Bool { self == nil }
+    public mutating func setToNil() { self = nil }
+}
+
 public protocol EmptiableType {
     var isEmpty: Bool { get }
 }
